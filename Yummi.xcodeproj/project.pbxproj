@@ -98,9 +98,9 @@
 			children = (
 				6683A9802B5FED0A00F271E7 /* YummiApp.swift */,
 				6683A9822B5FED0A00F271E7 /* ContentView.swift */,
+				6683A9AA2B5FF35500F271E7 /* Ingredients.swift */,
 				6683A9842B5FED0C00F271E7 /* Assets.xcassets */,
 				6683A9862B5FED0C00F271E7 /* Preview Content */,
-				6683A9AA2B5FF35500F271E7 /* Ingredients.swift */,
 			);
 			path = Yummi;
 			sourceTree = "<group>";

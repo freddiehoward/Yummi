@@ -20,6 +20,15 @@ struct Ingredients {
     private var expiryDate: Int
     
     
+    init(name: String, quantity: Int, unit: String, category: String, expiryDate: Int) {
+        self.name = name
+        self.quantity = quantity
+        self.unit = unit
+        self.category = category
+        self.expiryDate = expiryDate
+    }
+    
+    
     func displayStats() -> String {
         
         return """
