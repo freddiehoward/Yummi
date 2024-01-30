@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ingredients {
+struct Ingredient {
     
     private var name: String
     
@@ -39,6 +39,20 @@ category: \(self.category)
 expiryDate: \(self.expiryDate)
 """
         
+        
+    }
+    
+}
+
+struct Ingredients {
+    
+    private var ingredientsArray: [String] = [String]()
+    
+    init(ingredientsArray: [String]) {
+        guard let ingredient = readLine() else {
+            print
+        }
+        self.ingredientsArray = ingredientsArray
         
     }
     
