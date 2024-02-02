@@ -9,18 +9,20 @@ import Foundation
 
 struct Ingredient {
     
+    let id = UUID()
+    
     private var name: String
     
-    private var quantity: Int
+    private var quantity: String
     
     private var unit: String
     
     private var category: String
     
-    private var expiryDate: Int
+    private var expiryDate: String
     
     
-    init(name: String, quantity: Int, unit: String, category: String, expiryDate: Int) {
+    init(name: String, quantity: String, unit: String, category: String, expiryDate: String) {
         self.name = name
         self.quantity = quantity
         self.unit = unit
@@ -32,11 +34,11 @@ struct Ingredient {
     func displayStats() -> String {
         
         return """
-name: \(self.name)
-quantity: \(self.quantity)
-unit: \(self.unit)
-category: \(self.category)
-expiryDate: \(self.expiryDate)
+Name: \(self.name)
+Quantity: \(self.quantity)
+Unit: \(self.unit)
+Category: \(self.category)
+Expiry Date: \(self.expiryDate)
 """
         
         
