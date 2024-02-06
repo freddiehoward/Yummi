@@ -21,11 +21,55 @@ struct ContentView: View {
     
     @State var expiryDate: String = ""
     
-    //    let ingredients = Ingredients.init(name: "flour", quantity: 350, unit: "grams", category: "pantry", expiryDate: 11032024)
-    
-    let ingredient = Ingredient(name: "flour", quantity: "3", unit: "ml", category: "pantry", expiryDate: "9")
-    
     @State var ingredientsArray = [Ingredient]()
+    
+    //@State var filledCount = 0
+    
+/*
+var isAddIngredientButtonShowing: Bool {
+        
+        if newName.count > 0 {
+            filledCount += 1
+        
+        
+        if quantity.count > 0 {
+            filledCount += 1
+        }
+        
+        if unit.count > 0 {
+            filledCount += 1
+        }
+        
+        if category.count > 0 {
+            filledCount += 1
+        }
+        
+        if expiryDate.count > 0 {
+            filledCount += 1
+        }
+        
+        if filledCount == 5 {
+            //disabled = false
+            return false
+        }
+        
+        else {
+            return true
+        }
+    }
+*/
+    var isSwitchIngredientButtonShowing: Bool {
+        
+        if ingredientsArray.count > 1 {
+            //disabled = false ie showing
+            return false
+        }
+        
+        else{
+            return true
+        }
+        
+    }
     
     @State var selectedIngredient:Int = 0 {
         
@@ -50,6 +94,10 @@ struct ContentView: View {
                     Text(ingredientsArray[selectedIngredient].displayStats())
                 }
                 
+                else{
+                    Text("No ingredients in list")
+                }
+                
                 Button(action: {if ingredientsArray.count > 0 {
                     
                     selectedIngredient += 1
@@ -59,13 +107,13 @@ struct ContentView: View {
             }, label: {
                     Text("Switch Ingredient")
                 })
+                .disabled(isSwitchIngredientButtonShowing)
                 
             }
             .padding()
             
             Section {
                 VStack {
-                    Text("\(ingredient.displayStats())")
                     
                     TextField("Name", text: $newName)
                     
@@ -92,6 +140,7 @@ struct ContentView: View {
                         unit = String()
                         category = String()
                         expiryDate = String()
+                        //filledCount = 0
                         
                     }) {
                         Text("Add to Ingredients")
@@ -99,9 +148,11 @@ struct ContentView: View {
                             .padding(.vertical, 10)
                             .padding(.horizontal,20)
                     }
+                    //.disabled(isAddIngredientButtonShowing)
                     .background(Color.green)
                     .clipShape(Capsule())
                     .padding(25)
+                    
                 }
                 .padding(.vertical, 10)
             }
