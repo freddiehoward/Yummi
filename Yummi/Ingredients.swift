@@ -46,8 +46,7 @@ Expiry Date: \(self.expiryDate)
     
 }
 
-struct Ingredients {
-    
-    private var ingredientsArray: [String] = [String]()
-    
+enum Units: String, CaseIterable{
+    case lbs, kg, ml, bosh
+    var id: Self{self}
 }

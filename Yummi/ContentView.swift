@@ -15,7 +15,7 @@ struct ContentView: View {
     
     @State var quantity: String = ""
     
-    @State var unit: String = ""
+    @State var unit: Units = .kg
     
     @State var category: String = ""
     
@@ -23,41 +23,15 @@ struct ContentView: View {
     
     @State var ingredientsArray = [Ingredient]()
     
-    //@State var filledCount = 0
+    @State var filledCount = 0
     
-/*
-var isAddIngredientButtonShowing: Bool {
+
+    var isDisabled: Bool {
         
-        if newName.count > 0 {
-            filledCount += 1
+        return !(newName.count > 0 && quantity.count > 0 && category.count > 0 && expiryDate.count > 0)
         
-        
-        if quantity.count > 0 {
-            filledCount += 1
-        }
-        
-        if unit.count > 0 {
-            filledCount += 1
-        }
-        
-        if category.count > 0 {
-            filledCount += 1
-        }
-        
-        if expiryDate.count > 0 {
-            filledCount += 1
-        }
-        
-        if filledCount == 5 {
-            //disabled = false
-            return false
-        }
-        
-        else {
-            return true
-        }
     }
-*/
+ 
     var isSwitchIngredientButtonShowing: Bool {
         
         if ingredientsArray.count > 1 {
@@ -113,13 +87,16 @@ var isAddIngredientButtonShowing: Bool {
             .padding()
             
             Section {
-                VStack {
                     
                     TextField("Name", text: $newName)
                     
                     TextField("Quantity", text: $quantity)
-                    
-                    TextField("Unit", text: $unit)
+                
+                    Picker("Unit", selection: $unit) {
+                        ForEach(Units.allCases, id:\.self) {
+                            unit in Text(unit.rawValue)
+                        }
+                }
                     
                     TextField("Category", text: $category)
                     
@@ -130,17 +107,17 @@ var isAddIngredientButtonShowing: Bool {
                     Button(action: {
                         //create ingredient
                         
-                        let newIngredient = Ingredient(name: newName, quantity: quantity, unit: unit, category: category, expiryDate: expiryDate)
+                        let newIngredient = Ingredient(name: newName, quantity: quantity, unit: unit.rawValue, category: category, expiryDate: expiryDate)
                         //append to ingredients array
                         
                         ingredientsArray.append(newIngredient)
                         
                         newName = String()
                         quantity = String()
-                        unit = String()
+                        unit = .kg
                         category = String()
                         expiryDate = String()
-                        //filledCount = 0
+                        filledCount = 0
                         
                     }) {
                         Text("Add to Ingredients")
@@ -148,7 +125,7 @@ var isAddIngredientButtonShowing: Bool {
                             .padding(.vertical, 10)
                             .padding(.horizontal,20)
                     }
-                    //.disabled(isAddIngredientButtonShowing)
+                    .disabled(isDisabled)
                     .background(Color.green)
                     .clipShape(Capsule())
                     .padding(25)
@@ -158,7 +135,6 @@ var isAddIngredientButtonShowing: Bool {
             }
         }
     }
-}
 #Preview {
     ContentView()
 }
