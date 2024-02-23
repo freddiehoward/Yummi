@@ -19,7 +19,7 @@ struct ContentView: View {
     
     @State var category: String = ""
     
-    @State var expiryDate: String = ""
+    @State var expiryDate: Date = Date()
     
     @State var ingredientsArray = [Ingredient]()
     
@@ -28,7 +28,7 @@ struct ContentView: View {
 
     var isDisabled: Bool {
         
-        return !(newName.count > 0 && quantity.count > 0 && category.count > 0 && expiryDate.count > 0)
+        return !(newName.count > 0 && quantity.count > 0 && category.count > 0)
         
     }
  
@@ -100,14 +100,14 @@ struct ContentView: View {
                     
                     TextField("Category", text: $category)
                     
-                    TextField("Expiry Date", text: $expiryDate)
+                DatePicker("Expiry Date", selection: $expiryDate, displayedComponents: [.date])
                     
                     
                     
                     Button(action: {
                         //create ingredient
                         
-                        let newIngredient = Ingredient(name: newName, quantity: quantity, unit: unit.rawValue, category: category, expiryDate: expiryDate)
+                        let newIngredient = Ingredient(name: newName, quantity: quantity, unit: unit.rawValue, category: category, expiryDate: expiryDate.formatted(.dateTime.day().month(.wide).year()))
                         //append to ingredients array
                         
                         ingredientsArray.append(newIngredient)
@@ -116,7 +116,7 @@ struct ContentView: View {
                         quantity = String()
                         unit = .kg
                         category = String()
-                        expiryDate = String()
+                        expiryDate = Date()
                         filledCount = 0
                         
                     }) {
