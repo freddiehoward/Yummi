@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe {
+struct Recipes {
     
     private var name: String
     
@@ -27,9 +27,9 @@ struct Recipe {
     
     #if DEBUG
     
-    static var examples = [Recipe(name: "chicken sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3),
-                    Recipe(name: "bull sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3),
-                    Recipe(name: "protein powder sandwich", ingredients: [Ingredient](), isFavourite: true, rating: 3)]
+    static var examples = [Recipes(name: "chicken sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3),
+                    Recipes(name: "bull sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3),
+                    Recipes(name: "protein powder sandwich", ingredients: [Ingredient](), isFavourite: true, rating: 3)]
     
     #endif
     
