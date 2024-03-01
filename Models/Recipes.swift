@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct Recipes {
+struct Recipes: Identifiable {
     
     private var name: String
+    
+    var id: UUID = UUID()
     
     private var ingredients: [Ingredient]
     
@@ -25,12 +27,15 @@ struct Recipes {
         self.rating = rating
     }
     
-    #if DEBUG
+     func getName() -> String {
+     
+         return self.name
+     
+     }
     
-    static var examples = [Recipes(name: "chicken sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3),
-                    Recipes(name: "bull sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3),
-                    Recipes(name: "protein powder sandwich", ingredients: [Ingredient](), isFavourite: true, rating: 3)]
     
-    #endif
+#if DEBUG
+    static var examples = [Recipes(name: "chicken sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3), Recipes(name: "bull sandwich", ingredients: [Ingredient](), isFavourite: false, rating: 3), Recipes(name: "protein powder sandwich", ingredients: [Ingredient](), isFavourite: true, rating: 3)]
+#endif
     
 }

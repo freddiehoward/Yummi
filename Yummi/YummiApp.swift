@@ -11,6 +11,7 @@ import SwiftUI
 struct YummiApp: App {
     var body: some Scene {
         WindowGroup {
+            //change to empty array of recipes in future ie [Recipes]()
             ContentView()
         }
     }

@@ -11,19 +11,25 @@ import SwiftUI
 
 struct RecipesView: View {
     
- @State var recipes: [Recipes]
+    @State var recipes: [Recipes]
+    @State var viewShownRecipesView: Bool = true
     
     var body: some View{
-        
         VStack{
-            /*
-            ForEach(recipes, id: \.self) {name in
-                Text("\(recipe.name)")
+            List{
+                ForEach(recipes, id: \.self.id) {recipe in
+                    Text("\(recipe.getName())")
                 }
-             */
             }
+            /*
+             MAKE THIS IN VIEW MODEL
+            Button(action: {$viewShownRecipesView.toggle()}, label: {
+                Text("Button")
+            })
+             */
         }
     }
+}
 
 struct RecipesView_Previews: PreviewProvider {
     static var previews: some View {
