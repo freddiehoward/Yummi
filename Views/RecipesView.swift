@@ -12,8 +12,7 @@ import SwiftUI
 struct RecipesView: View {
     
     @State var recipes: [Recipes]
-    @State var viewShownRecipesView: Bool = true
-    
+
     var body: some View{
         VStack{
             List{
@@ -21,12 +20,6 @@ struct RecipesView: View {
                     Text("\(recipe.getName())")
                 }
             }
-            /*
-             MAKE THIS IN VIEW MODEL
-            Button(action: {$viewShownRecipesView.toggle()}, label: {
-                Text("Button")
-            })
-             */
         }
     }
 }
