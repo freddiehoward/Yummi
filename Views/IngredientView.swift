@@ -64,25 +64,16 @@ struct IngredientView: View {
         Form{
             Section{
                 
-                if ingredientsArray.count > 0{
-                    Text(ingredientsArray[selectedIngredient].displayStats())
+                if ingredientsArray.count == 0 {
+                    Text("No Ingredients Currently")
                 }
                 
-                else{
-                    Text("No ingredients in list")
-                }
-                
-                Button(action: {if ingredientsArray.count > 0 {
-                    
-                    selectedIngredient += 1
+                else {
+                    ForEach(ingredientsArray, id: \.self.id) { ingredient in
+                        Text(ingredient.displayStats())
+                    }
                     
                 }
-                    
-            }, label: {
-                    Text("Switch Ingredient")
-                })
-                .disabled(isSwitchIngredientButtonShowing)
-                
             }
             .padding()
             
@@ -134,7 +125,7 @@ struct IngredientView: View {
                 .padding(.vertical, 10)
             }
         }
-    }
+}
 
 #Preview {
     IngredientView()

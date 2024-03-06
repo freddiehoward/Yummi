@@ -11,15 +11,13 @@ class ContentViewViewModel: ObservableObject {
     
     static let shared = ContentViewViewModel()
     
-//    func toggleButton(inputtedBool: Bool) -> Bool {
-//        let toggledBool = !inputtedBool
-//        return toggledBool
-//    }
+    @Published var showingRecipesViewButtonOn: Bool = true
+    
     
     func toggleButton() {
         self.showingRecipesViewButtonOn.toggle()
     }
     
-    @Published var showingRecipesViewButtonOn: Bool = true
+    
     
 }

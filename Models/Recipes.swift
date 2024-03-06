@@ -27,9 +27,17 @@ struct Recipes: Identifiable {
         self.rating = rating
     }
     
-     func getName() -> String {
+    func getName() -> String {
+        return self.name
+    }
+    
+     func displayProperties() -> String {
      
-         return self.name
+         return """
+\(self.name)
+\(self.isFavourite ? "Favourite: ✅" : "Favourite: ❌")
+rating is: \(self.rating)
+"""
      
      }
     

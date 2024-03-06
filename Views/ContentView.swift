@@ -9,16 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var contentViewViewModel = ContentViewViewModel.shared
+    @ObservedObject var contentViewViewModel = ContentViewViewModel.shared
     
     var body: some View {
-        
-        Button {
-            contentViewViewModel.toggleButton()
-        } label: {
-            Text("\(contentViewViewModel.showingRecipesViewButtonOn ? "Show Recipes" : "Show Ingredients")")
+        VStack {
+            Button {
+                contentViewViewModel.toggleButton()
+            } label: {
+                Text("\(contentViewViewModel.showingRecipesViewButtonOn ? "Show Ingredients" : "Show Recipes")")
+                }
+            .padding()
+            if contentViewViewModel.showingRecipesViewButtonOn == true {
+                RecipesView(recipes: Recipes.examples)
+            }
+            else {
+                IngredientView()
+            }
         }
-        
     }
 }
 
